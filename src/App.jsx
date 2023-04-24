@@ -1,4 +1,5 @@
 import Router from "./applications/router";
+import "./applications/firebase";
 import './App.css';
 import { Navbar } from "./components/Navbar/Navbar";
 
