@@ -10,6 +10,14 @@ export const Navbar = () => {
         </div>
       </Link>
 
+      <div className="user_actions">
+        <div className="login">
+          Login
+        </div>
+        <div className="register">
+          Register
+        </div>
+      </div>
     </nav>
   )
 }

@@ -1,5 +1,7 @@
-/* Title */
-.title {
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     font-family: 'Poppins';
     font-style: normal;
     font-size: 24px;
@@ -7,6 +9,27 @@
     padding-bottom: 32px;
 }
 
+/* Title */
 .title span {
     font-weight: 700;
+}
+
+/* Login / Logout */
+.user_actions {
+    font-size: 18px;
+    display: flex;
+}
+
+.user_actions div {
+    padding: 0 10px;
+}
+
+.user_actions div:hover {
+    cursor: pointer;
+    color: rgb(44, 152, 240);
+    border-color: rgb(204, 204, 204);
+}
+
+.login {
+    border-right: 1px solid rgb(204, 204, 204);
 }
