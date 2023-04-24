@@ -9,13 +9,13 @@ export const JobList = () => {
 
   return (
     <div className="jobList">
-      <Link to='/jobDetail/1'>
+      <Link to='/jobDetail/1' style={{ textDecoration: 'none' }}>
         <Job />
       </Link>
-      <Link to='/jobDetail/2'>
+      <Link to='/jobDetail/2' style={{ textDecoration: 'none' }}>
         <Job />
       </Link>
-      <Link to='/jobDetail/3'>
+      <Link to='/jobDetail/3' style={{ textDecoration: 'none' }}>
         <Job />
       </Link>
     </div>

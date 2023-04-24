@@ -6,12 +6,9 @@ import './Home.css'
 export const Home = () => {
   return (
     <div className="home">
-      <header>
-        <div
-          className="title"
-        ><span>Github</span> Jobs</div>
+      <div className="searchBar">
         <SearchBar />
-      </header>
+      </div>
 
       <div className="content">
         <Filter />
