@@ -4,6 +4,7 @@
     justify-content: center;
     background-image: url('../../assets/backgroundImg.png');
     background-repeat: no-repeat;
+    background-size: cover;
     border-radius: 8px;
     overflow: hidden;
     padding: 40px;
