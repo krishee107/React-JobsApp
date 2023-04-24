@@ -12,6 +12,7 @@
     line-height: 21px;
     color: #334680;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 /* IMAGE */

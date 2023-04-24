@@ -1,0 +1,19 @@
+/* HEADER */
+.title {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-size: 24px;
+    line-height: 36px;
+    padding-bottom: 32px;
+}
+
+.title span {
+    font-weight: 700;
+}
+
+/* CONTENT */
+.content {
+    display: grid;
+    grid-template-columns: 20% 75%;
+    gap: 5%;
+}
