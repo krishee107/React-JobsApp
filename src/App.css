@@ -13,6 +13,7 @@ body {
     color: #282538;
 }
 
+/* HEADER */
 .title {
     font-family: 'Poppins';
     font-style: normal;
@@ -23,4 +24,10 @@ body {
 
 .title span {
     font-weight: 700;
+}
+
+/* CONTENT */
+.content {
+    display: flex;
+    justify-content: space-between;
 }
