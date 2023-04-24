@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 export const JobList = () => {
 
 
-
   return (
     <div className="jobList">
       <Link to='/jobDetail/1' style={{ textDecoration: 'none' }}>
