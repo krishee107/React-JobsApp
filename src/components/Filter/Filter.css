@@ -1,6 +1,72 @@
-// import styled from 'styled-components';
+.filter {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #334680;
+}
 
-// export const Test = styled.div`
-//  display: flex;
-// `;
-//
+/* JORNADA */
+.jornada {
+    padding-bottom: 30px;
+}
+
+.jornada label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+input[type="checkbox"] {
+    margin: 0;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 1px solid #B9BDCF;
+    border-radius: 2px;
+    transform: translateY(-0.075em);
+}
+
+/* LOCATION */
+
+.location_title {
+    font-weight: 700;
+    color: #B9BDCF;
+}
+
+.location input {
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    border: none;
+    padding: 17px 45px;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.location input::placeholder {
+    font-family: 'Roboto';
+    font-size: 12px;
+    line-height: 14px;
+    color: #B9BDCF;
+}
+
+/* City list */
+.cityList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cityList label {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.cityList input[type="radio"] {
+    background-color: #fff;
+    width: 1.15em;
+    height: 1.15em;
+}
