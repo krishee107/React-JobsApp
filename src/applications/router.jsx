@@ -10,7 +10,6 @@ import { Home } from '../pages/Home/Home';
 import { Profile } from '../pages/Profile/Profile';
 import { JobDetails } from '../components/JobDetails/JobDetails';
 import { Login } from '../components/Login/Login';
-import { Register } from '../components/Register/Register';
 
 const Router = () => {
     const dispatch = useDispatch();
@@ -30,7 +29,7 @@ const Router = () => {
     }, [dispatch, checking, isLoggedIn])
 
     if (checking) {
-        return <h3>cargando...</h3>
+        return <h3>Cargando...</h3>
     }
 
     return (
