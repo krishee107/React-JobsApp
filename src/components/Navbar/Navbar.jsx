@@ -54,7 +54,7 @@ export const Navbar = () => {
                 Perfil
               </Button>
             </Link>
-            <Button variant="contained" endIcon={<ExitToAppIcon />} onClick={handleGoogleAuth} style={{ backgroundColor: `#ee3731` }}>
+            <Button variant="contained" endIcon={<ExitToAppIcon />} onClick={handleLogout} style={{ backgroundColor: `#ee3731` }}>
               Cerrar sesión
             </Button>
 

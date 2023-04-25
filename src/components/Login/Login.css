@@ -1,0 +1,5 @@
+.loggedBox,
+.logoutBox {
+    display: grid;
+    gap: 10px;
+}
