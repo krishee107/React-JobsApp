@@ -1,14 +1,16 @@
 import Router from "./applications/router";
-import "./applications/firebase";
+import "./firebase/firebase";
 import './App.css';
 import { Navbar } from "./components/Navbar/Navbar";
+import { store } from "./store/store";
+import { Provider } from "react-redux";
 
 const App = () => {
   return (
-    <div className="app">
+    <Provider store={store} className="app">
       <Navbar />
       <Router />
-    </div>
+    </Provider>
   )
 }
 

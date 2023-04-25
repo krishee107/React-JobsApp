@@ -4,7 +4,6 @@ import { useState } from 'react'
 
 export const Navbar = () => {
   const [usuario, setUsuario] = useState(null)
-
   return (
     <nav>
       <Link to="/">
