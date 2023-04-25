@@ -8,8 +8,8 @@ import { login } from '../actions/auth';
 
 import { Home } from '../pages/Home/Home';
 import { Profile } from '../pages/Profile/Profile';
-import { Login } from '../components/Login/Login';
 import { JobDetails } from '../pages/JobDetails/JobDetails';
+import { Login } from '../components/Login/Login';
 
 const Router = () => {
     const dispatch = useDispatch();

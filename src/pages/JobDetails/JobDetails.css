@@ -1,0 +1,98 @@
+.jobDetails {
+    color: #334680;
+    font-family: 'Roboto';
+    font-style: normal;
+    display: grid;
+    grid-template-columns: 20% 75%;
+    gap: 5%;
+    align-items: baseline;
+}
+
+/* Menu lateral - How to apply */
+.jobOptions {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    font-family: 'Poppins';
+}
+
+.jobOptions a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: #1E86FF;
+}
+
+.howTo h3 {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    text-transform: uppercase;
+    color: #B9BDCF;
+}
+
+.howTo p span {
+    color: #1E86FF;
+}
+
+/* Header */
+.jobHeader {
+    padding: 30px 0;
+}
+
+.jobTitle {
+    display: flex;
+    gap: 25px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    padding: 10px 0;
+}
+
+/* Empresa mini profile */
+.job_profile {
+    display: grid;
+    grid-template-areas:
+        "I N"
+        "I C";
+    grid-template-columns: max-content 1fr;
+    align-items: center;
+    gap: 10px;
+}
+
+.job_profile_img {
+    width: 40px;
+    height: 40px;
+    grid-area: I;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.job_profile_img img {
+    width: 100%;
+    height: 100%;
+}
+
+.job_profile_name {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.job_profile_city {
+    display: flex;
+    gap: 8px;
+    color: #B9BDCF;
+    font-size: 12px;
+    line-height: 14px;
+    align-items: center;
+}
+
+/* Texto de la oferta*/
+.job_text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: justify;
+}
