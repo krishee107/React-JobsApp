@@ -38,17 +38,21 @@ const Router = () => {
         <Routes>
             <Route path="/login/" element={<Login />} />
             <Route path="*" element={<Login />} />
+            {
+                isLoggedIn &&
+                <Route index element={<Home />} />
+            }
+            {
+                isLoggedIn &&
+                <Route path="/profile/" element={<Profile />} />
+            }
+            {
+                isLoggedIn &&
+                <Route path="/jobDetail/:id" element={<JobDetails />} />
+            }
         </Routes>
     )
 };
 
 
 export default Router;
-
-/*
-
-            <Route index element={<Home />} />
-            <Route path="/profile/" element={<Profile />} />
-            <Route path="/jobDetail/:id" element={<JobDetails />} />
-            <Route path="/register/" element={<Register />} />
-*/
