@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "firebase/auth";
 
 import 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
@@ -26,5 +26,5 @@ auth.languageCode = "es"
 const db = getFirestore(app);
 const googleAuthProvider = new GoogleAuthProvider();
 
-export { db, googleAuthProvider, auth, signInWithPopup, onAuthStateChanged };
+export { db, googleAuthProvider, auth, signInWithPopup, onAuthStateChanged, signOut };
 

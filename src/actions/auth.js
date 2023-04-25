@@ -1,5 +1,5 @@
 import { types } from "../types";
-import { auth, googleAuthProvider, signInWithPopup } from "../firebase/firebase";
+import { auth, googleAuthProvider, signInWithPopup, signOut } from "../firebase/firebase";
 
 export const login = (uid, displayName) => ({
     type: types.login,
@@ -22,3 +22,14 @@ export const startGoogleAuth = () => {
             })
     }
 }
+export const startGoogleLogout = () => {
+    return (dispatch) => {
+        signOut(auth)
+            .then(() => {
+                dispatch(logout());
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+};
