@@ -10,6 +10,7 @@ import { Home } from '../pages/Home/Home';
 import { Profile } from '../pages/Profile/Profile';
 import { JobDetails } from '../pages/JobDetails/JobDetails';
 import { Login } from '../components/Login/Login';
+import { CreateJob } from '../pages/CeateJob/CreateJob';
 
 const Router = () => {
     const dispatch = useDispatch();
@@ -48,6 +49,11 @@ const Router = () => {
             {
                 isLoggedIn &&
                 <Route path="/jobDetail/:id" element={<JobDetails />} />
+            }
+            {/* Editar más adelante para admins o empresas */}
+            {
+                isLoggedIn &&
+                <Route path="/create/" element={<CreateJob />} />
             }
         </Routes>
     )
