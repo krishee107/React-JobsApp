@@ -8,6 +8,7 @@ import { login, startGoogleAuth, startGoogleLogout } from '../../actions/auth';
 import Button from '@mui/material/Button';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import Person2Icon from '@mui/icons-material/Person2';
 
 
 
@@ -47,9 +48,17 @@ export const Navbar = () => {
 
       <div className="user_actions">
         {isLoggedIn ?
-          <Button variant="contained" endIcon={<ExitToAppIcon />} onClick={handleGoogleAuth} style={{ backgroundColor: `#ee3731` }}>
-            Cerrar sesión
-          </Button>
+          <div className='loggedUser'>
+            <Link to="/profile">
+              <Button variant="contained" endIcon={<Person2Icon />}>
+                Perfil
+              </Button>
+            </Link>
+            <Button variant="contained" endIcon={<ExitToAppIcon />} onClick={handleGoogleAuth} style={{ backgroundColor: `#ee3731` }}>
+              Cerrar sesión
+            </Button>
+
+          </div>
           :
           <Button variant="contained" endIcon={<LockOpenIcon />} onClick={handleGoogleAuth}>
             Iniciar sesión
