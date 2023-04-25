@@ -7,9 +7,11 @@ import { Provider } from "react-redux";
 
 const App = () => {
   return (
-    <Provider store={store} className="app">
-      <Navbar />
-      <Router />
+    <Provider store={store}>
+      <div className="app">
+        <Navbar />
+        <Router />
+      </div>
     </Provider>
   )
 }

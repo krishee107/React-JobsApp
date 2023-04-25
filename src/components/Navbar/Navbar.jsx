@@ -1,9 +1,36 @@
 import { Link } from 'react-router-dom'
 import './Navbar.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { auth, onAuthStateChanged } from '../../firebase/firebase';
+import { login, startGoogleAuth, startGoogleLogout } from '../../actions/auth';
 
 export const Navbar = () => {
-  const [usuario, setUsuario] = useState(null)
+  const dispatch = useDispatch();
+  const [checking, setChecking] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user?.uid) {
+        dispatch(login(user.uid, user.displayName));
+        setIsLoggedIn(true)
+      } else {
+        setIsLoggedIn(false)
+      }
+      setChecking(false)
+    });
+  }, [dispatch, checking, isLoggedIn])
+
+  const handleGoogleAuth = () => {
+    dispatch(startGoogleAuth())
+  }
+
+  const handleLogout = () => {
+    dispatch(startGoogleLogout())
+  }
+
+
   return (
     <nav>
       <Link to="/">
@@ -13,19 +40,10 @@ export const Navbar = () => {
       </Link>
 
       <div className="user_actions">
-        {usuario ?
-          <Link>
-            Logout
-          </Link>
+        {isLoggedIn ?
+          <button onClick={handleLogout}>Logout</button>
           :
-          <div className="no_user">
-            <Link className='login' to="/login">
-              Login
-            </Link>
-            <Link className='register' to="/register">
-              Register
-            </Link>
-          </div>
+          <button onClick={handleGoogleAuth}>Iniciar sesión</button>
         }
 
       </div>
