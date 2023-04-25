@@ -15,7 +15,7 @@ export const Login = () => {
   }
 
   return (
-    <div className="login">
+    <div className="loginForm">
       <button onClick={handleGoogleAuth}>Iniciar</button>
       <button onClick={handleLogout}>Logout</button>
     </div>

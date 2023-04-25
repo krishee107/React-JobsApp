@@ -5,6 +5,12 @@ import { useDispatch } from 'react-redux';
 import { auth, onAuthStateChanged } from '../../firebase/firebase';
 import { login, startGoogleAuth, startGoogleLogout } from '../../actions/auth';
 
+import Button from '@mui/material/Button';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+
+
+
 export const Navbar = () => {
   const dispatch = useDispatch();
   const [checking, setChecking] = useState(true)
@@ -41,9 +47,13 @@ export const Navbar = () => {
 
       <div className="user_actions">
         {isLoggedIn ?
-          <button onClick={handleLogout}>Logout</button>
+          <Button variant="contained" endIcon={<ExitToAppIcon />} onClick={handleGoogleAuth} style={{ backgroundColor: `#ee3731` }}>
+            Cerrar sesión
+          </Button>
           :
-          <button onClick={handleGoogleAuth}>Iniciar sesión</button>
+          <Button variant="contained" endIcon={<LockOpenIcon />} onClick={handleGoogleAuth}>
+            Iniciar sesión
+          </Button>
         }
 
       </div>
