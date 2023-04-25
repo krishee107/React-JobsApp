@@ -1,6 +1,6 @@
-import { Link } from '@mui/material'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import './JobDetails.css'
+import { Link } from 'react-router-dom';
 
 export const JobDetails = () => {
   return (
