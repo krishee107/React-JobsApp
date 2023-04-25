@@ -13,7 +13,7 @@ export const Filter = () => {
       <div className="location">
         <h3 className='location_title'>LOCATION</h3>
         <label>
-          <i class="fa-solid fa-earth-americas"></i>
+          <i className="fa-solid fa-earth-americas"></i>
           <input type="text" name="location" id="location" placeholder='City, state, zip code or country ' />
         </label>
       </div>
