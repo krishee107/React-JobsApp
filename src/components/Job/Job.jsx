@@ -15,7 +15,7 @@ export const Job = () => {
 
       <div className="job_status">
         <div className="city">
-          <i className="fa-solid fa-earth-americas"></i>
+          <i class="fa-solid fa-earth-americas"></i>
           New york
         </div>
         <div className="ago">
