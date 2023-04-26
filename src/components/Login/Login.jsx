@@ -38,14 +38,14 @@ export const Login = () => {
     <div className="loginForm">
       {isLoggedIn ?
         <div className='loggedBox'>
-          <Alert severity="success" style={{ padding: `20px 10px` }}>This is a success alert — check it out!</Alert>
+          <Alert severity="error" style={{ padding: `20px 10px` }}>¡Ahora mismo te encuentras logueado! ¿Quieres cerrar sesión? </Alert>
           <Button variant="contained" endIcon={<ExitToAppIcon />} onClick={handleLogout} style={{ backgroundColor: `#ee3731`, justifySelf: `center` }} >
             Cerrar sesión
           </Button>
         </div>
         :
         <div className='logoutBox'>
-          <Alert severity="error" style={{ padding: `20px 10px` }}>¡Ahora mismo te encuentras logueado! ¿Quieres cerrar sesión? </Alert>
+          <Alert style={{ padding: `20px 10px` }}>Ahora mismo no tienes una sesión iniciada. Puedes hacerlo pulsando el botón de "Iniciar sesión". </Alert>
           <Button variant="contained" endIcon={<LockOpenIcon />} onClick={handleGoogleAuth} style={{ justifySelf: `center` }}>
             Iniciar sesión
           </Button>
