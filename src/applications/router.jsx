@@ -17,6 +17,7 @@ const Router = () => {
     const dispatch = useDispatch();
     const [checking, setChecking] = useState(true)
     const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [userType, setUserType] = useState(localStorage.getItem("userType") ?? "usuario");
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -53,11 +54,11 @@ const Router = () => {
             }
             {/* Editar más adelante para admins o empresas */}
             {
-                isLoggedIn &&
+                (isLoggedIn && (userType == "empresa " || userType == "administrador")) &&
                 <Route path="/create/" element={<CreateJob />} />
             }
             {
-                isLoggedIn &&
+                (isLoggedIn && userType == "administrador") &&
                 <Route path="/administrar/" element={<Administrar />} />
             }
         </Routes>
