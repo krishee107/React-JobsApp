@@ -13,6 +13,10 @@
     font-weight: normal !important;
 }
 
+.userType {
+    color: #334680
+}
+
 .userType label,
 .userType form {
     display: flex;
