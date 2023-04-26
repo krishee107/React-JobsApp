@@ -5,8 +5,10 @@ import { useEffect, useState } from 'react';
 import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
 import { app, db } from '../../firebase/firebase';
 
-export const JobList = () => {
+export const JobList = ({ cityfilter, timefilter }) => {
   const [jobs, setJobs] = useState([]);
+  const [city, setCity] = useState(cityfilter)
+  const [time, setTime] = useState(timefilter)
 
   useEffect(() => {
     const dbFirestore = getFirestore(app);
@@ -22,13 +24,52 @@ export const JobList = () => {
     return () => unsubscribe();
   }, []);
 
+
+  useEffect(() => {
+    setCity(cityfilter);
+    console.log(city, time)
+  }, [cityfilter]);
+
+  useEffect(() => {
+    setTime(timefilter);
+  }, [timefilter]);
   return (
     <div className="jobList">
-      {jobs.map(job => (
-        <Link to={`/jobDetail/${job.id}`} key={job.id} style={{ textDecoration: 'none' }}>
-          <Job job={job} />
-        </Link>
-      ))}
+      {jobs.map(job => {
+        console.log(job)
+        //SI NO TIENE FILTROS
+        if ((city === null || city === "false") && (time === null || time === "false")) {
+          return (
+            <Link to={`/jobDetail/${job.id}`} key={job.id} style={{ textDecoration: 'none' }}>
+              <Job job={job} />
+            </Link >
+          )
+        }
+        //SI TIENE FILTRO TIME
+        else if ((city === null || city === "false") && (time == job.time)) {
+          return (
+            <Link to={`/jobDetail/${job.id}`} key={job.id} style={{ textDecoration: 'none' }}>
+              <Job job={job} />
+            </Link >
+          )
+        }
+        //SI TIENE FILTRO CITY
+        else if ((city == job.city) && (time === null || time === "false")) {
+          return (
+            <Link to={`/jobDetail/${job.id}`} key={job.id} style={{ textDecoration: 'none' }}>
+              <Job job={job} />
+            </Link >
+          )
+        }
+        //SI TIENE TODOS LOS FILTROS
+        else if ((city == job.city) && (time == job.time)) {
+          return (
+            <Link to={`/jobDetail/${job.id}`} key={job.id} style={{ textDecoration: 'none' }}>
+              <Job job={job} />
+            </Link >
+          )
+        }
+      })}
     </div>
   )
 }
