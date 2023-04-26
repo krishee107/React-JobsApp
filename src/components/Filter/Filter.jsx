@@ -29,7 +29,7 @@ export const Filter = ({ handleCity, handleTime }) => {
           Part  time
         </label>
         <label>
-          <input checked type="radio" name="time" onChange={handleTimeChange} value="false" />
+          <input type="radio" name="time" onChange={handleTimeChange} value="false" />
           Sin definir
         </label>
       </div>
@@ -64,7 +64,7 @@ export const Filter = ({ handleCity, handleTime }) => {
           Barcelona
         </label>
         <label>
-          <input checked type="radio" name="radio" onChange={handleCityChange} className="city" value="false" />
+          <input type="radio" name="radio" onChange={handleCityChange} className="city" value="false" />
           Sin definir
         </label>
 
