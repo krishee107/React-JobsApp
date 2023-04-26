@@ -1,0 +1,7 @@
+.job_box {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    gap: 10px;
+    align-items: center;
+    justify-items: right;
+}
