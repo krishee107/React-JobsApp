@@ -1,0 +1,33 @@
+.createJob {
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    padding: 12px;
+    font-family: 'Roboto';
+    font-size: 18px;
+    line-height: 21px;
+    color: #334680;
+    box-sizing: border-box;
+}
+
+.createJob form {
+    display: grid;
+    gap: 10px;
+}
+
+.city {
+    display: flex;
+    justify-self: center;
+    gap: 25px;
+}
+
+.city label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: rgb(118, 118, 118)
+}
+
+.createJob h5 {
+    margin-bottom: 0;
+}
