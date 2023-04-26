@@ -52,9 +52,9 @@ const Router = () => {
                 isLoggedIn &&
                 <Route path="/jobDetail/:id" element={<JobDetails />} />
             }
-            {/* Editar más adelante para admins o empresas */}
+
             {
-                (isLoggedIn && (userType == "empresa " || userType == "administrador")) &&
+                ((isLoggedIn && userType == "empresa") || (isLoggedIn && userType == "administrador")) &&
                 <Route path="/create/" element={<CreateJob />} />
             }
             {
