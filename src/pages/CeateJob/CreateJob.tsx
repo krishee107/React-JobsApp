@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './CreateJob.css'
-import { Button, Divider, TextField } from '@mui/material'
+import { Alert, Button, Divider, TextField } from '@mui/material'
 import { db } from '../../firebase/firebase'
 import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 
 
 export const CreateJob = () => {
+    const [userType, setUserType] = useState(localStorage.getItem("userType") ?? "usuario");
+
     const [creada, setCreada] = useState(false)
     const [oferta, setOferta] = useState({
         nombre: '',
@@ -68,84 +70,92 @@ export const CreateJob = () => {
 
     return (
         <div className="createJob">
-            {creada ?
-                <div style={{ display: `grid`, padding: `20px` }}>
-                    La oferta se ha creado correctamente. <br></br>Ya puedes visualizarla en el listado de ofertas.
+            {
+                (userType == "empresa" || userType == "administrador") ?
+                    <div >
+                        {creada ?
+                            <div style={{ display: `grid`, padding: `20px` }}>
+                                La oferta se ha creado correctamente. <br></br>Ya puedes visualizarla en el listado de ofertas.
 
-                    <Link to="/">
-                        <Button variant="contained" style={{ width: `fit-content`, justifySelf: `center`, marginTop: `20px` }} > Volver al listado </Button>
-                    </Link>
-                </div>
-                :
-                <div>
-                    <h3>Crear una nueva oferta laboral</h3>
-                    <form onSubmit={handleSubmit}>
-                        <Divider>Información de la empresa</Divider>
+                                <Link to="/">
+                                    <Button variant="contained" style={{ width: `fit-content`, justifySelf: `center`, marginTop: `20px` }} > Volver al listado </Button>
+                                </Link>
+                            </div>
+                            :
+                            <div>
+                                <h3>Crear una nueva oferta laboral</h3>
+                                <form onSubmit={handleSubmit}>
+                                    <Divider>Información de la empresa</Divider>
 
-                        <TextField id="outlined-basic" label="Nombre de la empresa" name='name' variant="outlined" required />
-                        <TextField id="outlined-basic" label="URL logo de la empresa" name='img' variant="outlined" />
+                                    <TextField id="outlined-basic" label="Nombre de la empresa" name='name' variant="outlined" required />
+                                    <TextField id="outlined-basic" label="URL logo de la empresa" name='img' variant="outlined" />
 
-                        <Divider>Información de la oferta</Divider>
+                                    <Divider>Información de la oferta</Divider>
 
-                        <TextField id="outlined-basic" label="Titulo de la oferta" name='title' variant="outlined" required />
-                        <TextField
-                            name='text'
-                            id="filled-multiline-static"
-                            label="Texto de la oferta"
-                            multiline
-                            rows={4}
-                            variant="outlined"
-                            required
-                        />
-                        <Divider>Otra información</Divider>
-                        <h5>Ciudad</h5>
-                        <div className="city">
-                            <label>
-                                <input type="radio" name='city' value="London" onChange={handleCityChange} />
-                                London
-                            </label>
+                                    <TextField id="outlined-basic" label="Titulo de la oferta" name='title' variant="outlined" required />
+                                    <TextField
+                                        name='text'
+                                        id="filled-multiline-static"
+                                        label="Texto de la oferta"
+                                        multiline
+                                        rows={4}
+                                        variant="outlined"
+                                        required
+                                    />
+                                    <Divider>Otra información</Divider>
+                                    <h5>Ciudad</h5>
+                                    <div className="city">
+                                        <label>
+                                            <input type="radio" name='city' value="London" onChange={handleCityChange} />
+                                            London
+                                        </label>
 
-                            <label>
-                                <input type="radio" name='city' value="Amsterdam" onChange={handleCityChange} />
-                                Amsterdam
-                            </label>
+                                        <label>
+                                            <input type="radio" name='city' value="Amsterdam" onChange={handleCityChange} />
+                                            Amsterdam
+                                        </label>
 
-                            <label>
-                                <input type="radio" name='city' value="NewYork" onChange={handleCityChange} />
-                                New York
-                            </label>
+                                        <label>
+                                            <input type="radio" name='city' value="NewYork" onChange={handleCityChange} />
+                                            New York
+                                        </label>
 
-                            <label>
-                                <input type="radio" name='city' value="Berlin" onChange={handleCityChange} />
-                                Berlin
-                            </label>
+                                        <label>
+                                            <input type="radio" name='city' value="Berlin" onChange={handleCityChange} />
+                                            Berlin
+                                        </label>
 
-                            <label>
-                                <input type="radio" name='city' value="Barcelona" onChange={handleCityChange} />
-                                Barcelona
-                            </label>
-                        </div>
-
-
-                        <h5>Modalidad</h5>
-                        <div className="city">
-                            <label>
-                                <input type="radio" name='time' value="partTime" onChange={handleTimeChange} />
-                                Part Time
-                            </label>
-
-                            <label>
-                                <input type="radio" name='time' value="fullTime" onChange={handleTimeChange} />
-                                Full Time
-                            </label>
-                        </div>
+                                        <label>
+                                            <input type="radio" name='city' value="Barcelona" onChange={handleCityChange} />
+                                            Barcelona
+                                        </label>
+                                    </div>
 
 
-                        <Button type='submit' variant="contained" style={{ width: `fit-content`, justifySelf: `center`, marginTop: `50px`, marginBottom: `10px` }} > Crear oferta</Button>
-                    </form>
-                </div>
+                                    <h5>Modalidad</h5>
+                                    <div className="city">
+                                        <label>
+                                            <input type="radio" name='time' value="partTime" onChange={handleTimeChange} />
+                                            Part Time
+                                        </label>
+
+                                        <label>
+                                            <input type="radio" name='time' value="fullTime" onChange={handleTimeChange} />
+                                            Full Time
+                                        </label>
+                                    </div>
+
+
+                                    <Button type='submit' variant="contained" style={{ width: `fit-content`, justifySelf: `center`, marginTop: `50px`, marginBottom: `10px` }} > Crear oferta</Button>
+                                </form>
+                            </div>
+                        }
+
+                    </div >
+                    :
+                    <Alert severity="error">This is an error alert — check it out!</Alert>
             }
-
         </div >
+
     )
 }

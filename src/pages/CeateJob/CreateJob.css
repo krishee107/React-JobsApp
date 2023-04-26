@@ -8,6 +8,8 @@
     line-height: 21px;
     color: #334680;
     box-sizing: border-box;
+    max-width: 850px;
+    margin: 0 auto;
 }
 
 .createJob form {
