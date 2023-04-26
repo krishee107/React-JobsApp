@@ -5,8 +5,12 @@ export const Filter = () => {
     <div className="filter">
       <div className="jornada">
         <label>
-          <input type="checkbox" name="fulltime" id="fulltime" />
+          <input type="checkbox" name="time" value="fullTime" />
           Full  time
+        </label>
+        <label>
+          <input type="checkbox" name="time" value="partTime" />
+          Part  time
         </label>
       </div>
 
@@ -34,6 +38,10 @@ export const Filter = () => {
         <label>
           <input type="radio" name="radio" className="city" value="berlin" />
           Berlin
+        </label>
+        <label>
+          <input type="radio" name="radio" className="city" value="berlin" />
+          Barcelona
         </label>
 
       </div>

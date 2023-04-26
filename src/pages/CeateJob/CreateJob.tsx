@@ -116,6 +116,11 @@ export const CreateJob = () => {
                             </label>
 
                             <label>
+                                <input type="radio" name='city' value="Berlin" onChange={handleCityChange} />
+                                Berlin
+                            </label>
+
+                            <label>
                                 <input type="radio" name='city' value="Barcelona" onChange={handleCityChange} />
                                 Barcelona
                             </label>
