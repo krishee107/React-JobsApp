@@ -12,7 +12,6 @@ export const JobDetails = () => {
   const [texto, setTexto] = useState(null)
 
   useEffect(() => {
-    console.log("INICIO: " + job)
     const db = getFirestore();
     const jobRef = doc(db, "ofertas", id);
     const getJob = async () => {

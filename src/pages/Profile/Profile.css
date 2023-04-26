@@ -12,3 +12,15 @@
 .profile_info span {
     font-weight: normal !important;
 }
+
+.userType label,
+.userType form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.userType form {
+    padding: 10px 0;
+}
