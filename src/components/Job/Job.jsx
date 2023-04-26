@@ -18,7 +18,12 @@ export const Job = (props) => {
       <div className="job_info">
         <div className="job_enterprise">{job.nombre}</div>
         <div className="job_title">{job.titulo}</div>
-        <div className="time">Full time</div>
+        {
+          job.time == 'fullTime' ?
+            <div className="time">Full time</div>
+            :
+            <div className="time">Part time</div>
+        }
       </div>
 
       <div className="job_status">
