@@ -4,19 +4,48 @@ import { Button, Divider, TextField } from '@mui/material'
 
 
 export const CreateJob = () => {
-    const [city, setCity] = useState(null);
-    const [time, setTime] = useState(null)
+    const [oferta, setOferta] = useState({
+        nombre: '',
+        urlLogo: '',
+        titulo: '',
+        texto: '',
+        city: '',
+        time: '',
+    })
 
 
-    const handleCityChange = () => {
-        //setCity()
+    const handleCityChange = (e) => {
+        setOferta({
+            ...oferta,
+            city: e.target.value
+        })
     }
-    const handleTimeChange = () => {
-        //setTime();
+    const handleTimeChange = (e) => {
+        setOferta({
+            ...oferta,
+            time: e.target.value
+        })
     }
+
     const handleSubmit = (e) => {
         e.preventDefault();
-    }
+        const formData = new FormData(e.target);
+        const nombre = formData.get('name');
+        const urlLogo = formData.get('img');
+        const titulo = formData.get('title');
+        const texto = formData.get('text');
+
+        const newOferta = {
+            ...oferta,
+            nombre,
+            urlLogo,
+            titulo,
+            texto,
+        };
+
+        setOferta(newOferta);
+        alert("La oferta se ha creado correctamente")
+    };
 
     return (
         <div className="createJob">
@@ -24,12 +53,12 @@ export const CreateJob = () => {
             <form onSubmit={handleSubmit}>
                 <Divider>Información de la empresa</Divider>
 
-                <TextField id="outlined-basic" label="Nombre de la empresa" name='name' variant="outlined" />
-                <TextField id="outlined-basic" label="URL logo de la empresa" name='img' variant="outlined" />
+                <TextField id="outlined-basic" label="Nombre de la empresa" name='name' variant="outlined" required />
+                <TextField id="outlined-basic" label="URL logo de la empresa" name='img' variant="outlined" required />
 
                 <Divider>Información de la oferta</Divider>
 
-                <TextField id="outlined-basic" label="Titulo de la oferta" name='title' variant="outlined" />
+                <TextField id="outlined-basic" label="Titulo de la oferta" name='title' variant="outlined" required />
                 <TextField
                     name='text'
                     id="filled-multiline-static"
@@ -37,6 +66,7 @@ export const CreateJob = () => {
                     multiline
                     rows={4}
                     variant="outlined"
+                    required
                 />
                 <Divider>Otra información</Divider>
                 <h5>Ciudad</h5>
@@ -77,7 +107,7 @@ export const CreateJob = () => {
                 </div>
 
 
-                <Button variant="contained" style={{ width: `fit-content`, justifySelf: `center`, marginTop: `50px`, marginBottom: `10px` }} > Crear oferta</Button>
+                <Button type='submit' variant="contained" style={{ width: `fit-content`, justifySelf: `center`, marginTop: `50px`, marginBottom: `10px` }} > Crear oferta</Button>
             </form>
         </div >
     )
