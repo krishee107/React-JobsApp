@@ -63,7 +63,7 @@ export const Navbar = () => {
             {/* ADMINISTRADOR */}
             {userType == "administrador" &&
               <div className="administrador_actions">
-                <Link to="/create">
+                <Link to="/administrar">
                   <Button variant="contained" style={{ backgroundColor: `#9233e4` }}>
                     Administrar
                   </Button>

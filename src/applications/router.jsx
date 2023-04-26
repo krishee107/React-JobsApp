@@ -11,6 +11,7 @@ import { Profile } from '../pages/Profile/Profile';
 import { JobDetails } from '../pages/JobDetails/JobDetails';
 import { Login } from '../components/Login/Login';
 import { CreateJob } from '../pages/CeateJob/CreateJob';
+import { Administrar } from '../pages/Administrar/Administrar';
 
 const Router = () => {
     const dispatch = useDispatch();
@@ -54,6 +55,10 @@ const Router = () => {
             {
                 isLoggedIn &&
                 <Route path="/create/" element={<CreateJob />} />
+            }
+            {
+                isLoggedIn &&
+                <Route path="/administrar/" element={<Administrar />} />
             }
         </Routes>
     )
