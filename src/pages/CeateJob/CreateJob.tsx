@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import './CreateJob.css'
 import { Button, Divider, TextField } from '@mui/material'
+import { db } from '../../firebase/firebase'
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+
 
 
 export const CreateJob = () => {
@@ -44,8 +47,17 @@ export const CreateJob = () => {
         };
 
         setOferta(newOferta);
-        alert("La oferta se ha creado correctamente")
+        agregarOferta(newOferta)
     };
+
+    const agregarOferta = async (oferta) => {
+        try {
+            const docRef = await addDoc(collection(db, "ofertas"), oferta);
+            console.log("Oferta agregada con ID: ", docRef.id);
+        } catch (e) {
+            console.error("Error al agregar la oferta: ", e);
+        }
+    }
 
     return (
         <div className="createJob">
