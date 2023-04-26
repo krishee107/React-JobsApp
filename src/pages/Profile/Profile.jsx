@@ -12,7 +12,7 @@ export const Profile = () => {
   const [checking, setChecking] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [userInfo, setUserInfo] = useState(null);
-  const [userType, setUserType] = useState(null)
+  const [userType, setUserType] = useState(localStorage.getItem("userType") ?? "usuario");
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -28,7 +28,8 @@ export const Profile = () => {
     });
   }, [dispatch, checking, isLoggedIn])
 
-
+  //Manejar los tipos de usuario por firebase
+  /*
   useEffect(() => {
     if (userInfo) {
       const db = getFirestore();
@@ -53,11 +54,15 @@ export const Profile = () => {
       await setDoc(userRef, userData);
       setUserType(userData.type)
     }
-  };
+  }; */
 
-  const handleUserType = () => {
-
+  const handleUserType = (e) => {
+    setUserType(e.target.value)
+    window.location.reload();
   }
+  useEffect(() => {
+    localStorage.setItem("userType", userType);
+  }, [userType]);
 
   return (
     <div>

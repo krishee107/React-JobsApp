@@ -11,11 +11,11 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import Person2Icon from '@mui/icons-material/Person2';
 
 
-
 export const Navbar = () => {
   const dispatch = useDispatch();
   const [checking, setChecking] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [userType, setUserType] = useState(localStorage.getItem("userType") ?? "usuario");
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -37,7 +37,6 @@ export const Navbar = () => {
     dispatch(startGoogleLogout())
   }
 
-
   return (
     <nav>
       <Link to="/">
@@ -46,9 +45,33 @@ export const Navbar = () => {
         </div>
       </Link>
 
+
       <div className="user_actions">
+
         {isLoggedIn ?
           <div className='loggedUser'>
+            {/* EMPRESA */}
+            {(userType == "empresa" || userType == "administrador") &&
+              <div className="empresa_actions">
+                <Link to="/create">
+                  <Button variant="contained" style={{ backgroundColor: `#0f24c6` }}>
+                    Crear oferta
+                  </Button>
+                </Link>
+              </div>
+            }
+            {/* ADMINISTRADOR */}
+            {userType == "administrador" &&
+              <div className="administrador_actions">
+                <Link to="/create">
+                  <Button variant="contained" style={{ backgroundColor: `#9233e4` }}>
+                    Administrar
+                  </Button>
+                </Link>
+              </div>
+            }
+
+            {/* USUARIO */}
             <Link to="/profile">
               <Button variant="contained" endIcon={<Person2Icon />}>
                 Perfil
