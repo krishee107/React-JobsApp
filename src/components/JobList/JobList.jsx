@@ -15,6 +15,7 @@ export const JobList = () => {
     const unsubscribe = onSnapshot(jobsCollectionRef, snapshot => {
       setJobs(snapshot.docs.map(doc => ({
         id: doc.id,
+        creacion: doc.data().creacion,
         ...doc.data()
       })));
     });

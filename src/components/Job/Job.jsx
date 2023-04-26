@@ -1,9 +1,14 @@
 import { useState } from 'react'
 import './Job.css'
+import moment from 'moment'
 
 export const Job = (props) => {
   const [job, setjob] = useState(props.job)
-  console.log(job)
+
+  const timeAgo = (date) => {
+    return moment(date).fromNow(); // calcula la diferencia de tiempo
+  }
+
   return (
     <div className="job">
       <div className="job_img">
@@ -33,7 +38,7 @@ export const Job = (props) => {
         </div>
         <div className="ago">
           <i className="fa-regular fa-clock"></i>
-          5 days ago
+          {timeAgo(job.creacion.toDate().toString())}
         </div>
       </div>
     </div>

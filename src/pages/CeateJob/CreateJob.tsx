@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './CreateJob.css'
 import { Button, Divider, TextField } from '@mui/material'
 import { db } from '../../firebase/firebase'
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
 
 
@@ -16,6 +16,7 @@ export const CreateJob = () => {
         texto: '',
         city: '',
         time: '',
+        creacion: '',
     })
 
 
@@ -46,6 +47,7 @@ export const CreateJob = () => {
             urlLogo,
             titulo,
             texto,
+            creacion: serverTimestamp()
         };
 
         setOferta(newOferta);
