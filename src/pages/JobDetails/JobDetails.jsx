@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { Link, useParams } from "react-router-dom";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import moment from 'moment'
 
 export const JobDetails = () => {
   const { id } = useParams();
@@ -23,7 +24,6 @@ export const JobDetails = () => {
       }
     };
     getJob();
-    console.log(job)
   }, [id]);
 
   useEffect(() => {
@@ -39,8 +39,11 @@ export const JobDetails = () => {
       texto_con_etiquetas += `<p>${parrafo}</p>`;
     }
     setTexto(texto_con_etiquetas);
-    console.log(texto_con_etiquetas);
   };
+
+  const timeAgo = (date) => {
+    return moment(date).fromNow(); // calcula la diferencia de tiempo
+  }
 
   return (
     <div >
@@ -77,7 +80,7 @@ export const JobDetails = () => {
               <div className="job_status">
                 <div className="ago">
                   <i className="fa-regular fa-clock"></i>
-                  5 days ago
+                  {timeAgo(job.creacion.toDate().toString())}
                 </div>
               </div>
             </div>
