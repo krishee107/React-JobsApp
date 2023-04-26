@@ -22,7 +22,6 @@ export const Navbar = () => {
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName));
         setIsLoggedIn(true)
-        console.log(user)
       } else {
         setIsLoggedIn(false)
       }

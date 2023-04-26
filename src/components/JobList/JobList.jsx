@@ -27,7 +27,6 @@ export const JobList = ({ cityfilter, timefilter }) => {
 
   useEffect(() => {
     setCity(cityfilter);
-    console.log(city, time)
   }, [cityfilter]);
 
   useEffect(() => {
@@ -36,7 +35,6 @@ export const JobList = ({ cityfilter, timefilter }) => {
   return (
     <div className="jobList">
       {jobs.map(job => {
-        console.log(job)
         //SI NO TIENE FILTROS
         if ((city === null || city === "false") && (time === null || time === "false")) {
           return (

@@ -14,7 +14,6 @@ export const startGoogleAuth = () => {
     return (dispatch) => {
         signInWithPopup(auth, googleAuthProvider)
             .then(({ user }) => {
-                console.log(user)
                 dispatch(login(user.uid, user.displayName))
             })
             .catch((e) => {
