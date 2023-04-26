@@ -8,7 +8,10 @@ import { login, startGoogleAuth, startGoogleLogout } from '../../actions/auth';
 import Button from '@mui/material/Button';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import HomeIcon from '@mui/icons-material/Home';
 import Person2Icon from '@mui/icons-material/Person2';
+import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 
 export const Navbar = () => {
@@ -50,11 +53,17 @@ export const Navbar = () => {
 
         {isLoggedIn ?
           <div className='loggedUser'>
+            {/* USUARIO */}
+            <Link to="/">
+              <Button variant="contained" endIcon={<HomeIcon />}>
+                Inicio
+              </Button>
+            </Link>
             {/* EMPRESA */}
             {(userType == "empresa" || userType == "administrador") &&
               <div className="empresa_actions">
                 <Link to="/create">
-                  <Button variant="contained" style={{ backgroundColor: `#0f24c6` }}>
+                  <Button variant="contained" endIcon={<HistoryEduIcon />}>
                     Crear oferta
                   </Button>
                 </Link>
@@ -64,7 +73,7 @@ export const Navbar = () => {
             {userType == "administrador" &&
               <div className="administrador_actions">
                 <Link to="/administrar">
-                  <Button variant="contained" style={{ backgroundColor: `#9233e4` }}>
+                  <Button variant="contained" endIcon={<AdminPanelSettingsIcon />}>
                     Administrar
                   </Button>
                 </Link>
