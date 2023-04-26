@@ -1,8 +1,30 @@
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import './JobDetails.css'
-import { Link } from 'react-router-dom';
+
+import { useEffect, useState } from "react";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { Link, useParams } from "react-router-dom";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export const JobDetails = () => {
+  const { id } = useParams();
+  const [job, setJob] = useState(null);
+
+  useEffect(() => {
+    const db = getFirestore();
+    const jobRef = doc(db, "ofertas", id);
+    const getJob = async () => {
+      const jobDoc = await getDoc(jobRef);
+      if (jobDoc.exists()) {
+        setJob(jobDoc.data());
+      } else {
+        console.log("No such document!");
+      }
+    };
+    getJob();
+    console.log(job)
+  }, [id]);
+
+
   return (
     <div className="jobDetails">
       <div className="jobOptions">
@@ -23,8 +45,15 @@ export const JobDetails = () => {
 
         <div className="jobHeader">
           <div className="jobTitle">
-            Front-End Software Engineer
-            <div className="time">FULL TIME</div>
+            {job.titulo}
+            <div>
+              {
+                job.time == 'fullTime' ?
+                  <div className="time">Full time</div>
+                  :
+                  <div className="time">Part time</div>
+              }
+            </div>
           </div>
           <div className="job_status">
             <div className="ago">
@@ -36,9 +65,13 @@ export const JobDetails = () => {
 
         <div className="job_profile">
           <div className="job_profile_img">
-            <img src="https://kasisto.com/wp-content/themes/kasisto/img/client-logo.png" alt="Job logo" />
+            {job.urlLogo != '' ?
+              <img src={job.urlLogo} />
+              :
+              <img src="https://gigr.com/images/png/default_logo.png" alt="Job logo" />
+            }
           </div>
-          <div className="job_profile_name">Kasisto</div>
+          <div className="job_profile_name">{job.city}</div>
           <div className="job_profile_city">
             <i className="fa-solid fa-earth-americas"></i>
             New york
