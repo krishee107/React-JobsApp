@@ -5,8 +5,8 @@ import { SearchBar } from "../../components/SearchBar/SearchBar"
 import './Home.css'
 
 export const Home = () => {
-  const [cityFilter, setCityFilter] = useState(false)
-  const [timeFilter, setTimeFilter] = useState(false)
+  const [cityFilter, setCityFilter] = useState(null)
+  const [timeFilter, setTimeFilter] = useState(null)
 
   const handleTime = (time) => {
     console.log(time)
