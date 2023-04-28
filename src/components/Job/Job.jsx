@@ -38,9 +38,7 @@ export const Job = (props) => {
       </div>
 
       <div className='job_status'>
-        <div className="job_fav">
-          <FavoriteBorderIcon />
-        </div>
+        <FavoriteBorderIcon className='job_fav' />
 
         <div className="job_location">
           <div className="city">

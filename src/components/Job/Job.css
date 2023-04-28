@@ -55,6 +55,11 @@
 }
 
 /* JOB STATUS / FAV */
+.job_fav:hover {
+    cursor: pointer;
+    color: rgb(241, 68, 68);
+}
+
 .job_status {
     display: flex;
     flex-direction: column;
