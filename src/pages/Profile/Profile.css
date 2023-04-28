@@ -28,3 +28,18 @@
 .userType form {
     padding: 10px 0;
 }
+
+@media screen and (max-width: 768px) {
+    .profile_info {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        word-wrap: break-word;
+    }
+
+    .radioType label,
+    .radioType {
+        display: flex;
+        flex-direction: column !important;
+    }
+}

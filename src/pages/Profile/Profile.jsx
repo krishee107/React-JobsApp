@@ -94,7 +94,7 @@ export const Profile = () => {
 
       <div style={{ paddingTop: `40px` }}>
         {userType ?
-          <Paper elevation={5} style={{ margin: `0 auto`, padding: `30px` }}>
+          <Paper elevation={5} style={{ margin: `0 auto`, padding: `30px` }} >
             <div className="userInfo" style={{ paddingBottom: `30px`, color: `#334680` }}>
               Hay 3 tipos de usuarios:<br></br>
               -<b>Usuario:</b> Puede ver ofertas, los detalles de la oferta, marcarla como favorito y listar sus favoritos.<br />
@@ -104,7 +104,7 @@ export const Profile = () => {
             <div className="userType">
               Ahora mismo tu usuario es de tipo: <b>{userType}</b>. <br />
               Puedes modificar tu usuario aquí:<br />
-              <form>
+              <form className="radioType">
                 <label>
                   <input type="radio" name="type" value="usuario" onChange={handleUserType} />
                   Usuario

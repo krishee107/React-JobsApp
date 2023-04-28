@@ -22,3 +22,10 @@ a {
     text-decoration: none;
     color: #334680;
 }
+
+@media screen and (max-width: 768px) {
+    .app {
+        padding: 10px
+    }
+
+}
