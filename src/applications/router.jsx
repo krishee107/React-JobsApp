@@ -12,6 +12,7 @@ import { JobDetails } from '../pages/JobDetails/JobDetails';
 import { Login } from '../components/Login/Login';
 import { CreateJob } from '../pages/CeateJob/CreateJob';
 import { Administrar } from '../pages/Administrar/Administrar';
+import { FavoritosList } from '../pages/FavoritosList/FavoritosList';
 
 const Router = () => {
     const dispatch = useDispatch();
@@ -47,6 +48,10 @@ const Router = () => {
             {
                 isLoggedIn &&
                 <Route path="/profile/" element={<Profile />} />
+            }
+            {
+                isLoggedIn &&
+                <Route path="/favoritos/" element={<FavoritosList />} />
             }
             {
                 isLoggedIn &&

@@ -12,6 +12,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import Person2Icon from '@mui/icons-material/Person2';
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
 export const Navbar = () => {
@@ -81,6 +82,11 @@ export const Navbar = () => {
             }
 
             {/* USUARIO */}
+            <Link to="/favoritos">
+              <Button variant="contained" endIcon={<FavoriteIcon />}>
+                Favoritos
+              </Button>
+            </Link>
             <Link to="/profile">
               <Button variant="contained" endIcon={<Person2Icon />}>
                 Perfil
