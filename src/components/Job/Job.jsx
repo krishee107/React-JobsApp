@@ -27,7 +27,10 @@ export const Job = (props) => {
           job.time == 'fullTime' ?
             <div className="time">Full time</div>
             :
-            <div className="time">Part time</div>
+            job.time == 'partTime' ?
+              <div className="time">Part time</div>
+              :
+              <div className="time">No especificado </div>
         }
       </div>
 
