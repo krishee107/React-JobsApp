@@ -2,6 +2,7 @@ import './JobList.css';
 import { Job } from '../Job/Job';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useFilteredJobs } from '../../hooks/useFilteredJobs';
 import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
 import { app, db } from '../../firebase/firebase';
 
