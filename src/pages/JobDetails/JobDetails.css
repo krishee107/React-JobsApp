@@ -103,3 +103,28 @@
     line-height: 150%;
     text-align: justify;
 }
+
+@media screen and (max-width: 768px) {
+    .jobDetails {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .job_profile {
+        grid-template-areas:
+            "I N"
+            "C C";
+        grid-template-columns: max-content 1fr;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .job_profile_name {
+        font-size: 16px;
+    }
+
+    .job_profile_city {
+        font-size: 12px;
+    }
+
+}
