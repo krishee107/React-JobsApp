@@ -44,3 +44,21 @@
 .createJob h5 {
     margin-bottom: 0;
 }
+
+@media screen and (max-width: 768px) {
+    .createJob {
+        padding: 12px 10ox;
+    }
+
+    .city {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .city label {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+}
