@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
 import { app, db } from '../../firebase/firebase';
-import { useFilteredJobs } from '../../hooks/useFilteredJobs';
+
 
 export const JobList = ({ cityfilter, timefilter }) => {
   const [jobs, setJobs] = useState([]);

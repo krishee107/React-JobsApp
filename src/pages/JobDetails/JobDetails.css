@@ -49,6 +49,12 @@
     line-height: 28px;
     padding: 10px 0;
     text-transform: capitalize;
+    justify-content: space-between;
+}
+
+.job_fav:hover {
+    cursor: pointer;
+    color: rgb(238, 59, 59);
 }
 
 /* Empresa mini profile */

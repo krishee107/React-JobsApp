@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { Link, useParams } from "react-router-dom";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import moment from 'moment'
 
 export const JobDetails = () => {
@@ -77,6 +78,10 @@ export const JobDetails = () => {
                         :
                         <div className="time">No especificado </div>
                   }
+                </div>
+
+                <div className="job_fav">
+                  <FavoriteBorderIcon />
                 </div>
               </div>
               <div className="job_status">

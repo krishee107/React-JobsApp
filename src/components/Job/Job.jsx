@@ -2,9 +2,6 @@ import { useState } from 'react'
 import './Job.css'
 import moment from 'moment'
 
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-
 export const Job = (props) => {
   const [job, setjob] = useState(props.job)
 
@@ -37,27 +34,17 @@ export const Job = (props) => {
         }
       </div>
 
-      <div className='job_status'>
-        <FavoriteBorderIcon className='job_fav' />
+      <div className="job_status">
+        <div className="city">
+          <i className="fa-solid fa-earth-americas"></i>
 
-        <div className="job_location">
-          <div className="city">
-            <i className="fa-solid fa-earth-americas"></i>
-            {
-              job.city ?
-                job.city
-                :
-                'No especificado'
-            }
-          </div>
-          <div className="ago">
-            <i className="fa-regular fa-clock"></i>
-            {timeAgo(job.creacion.toDate().toString())}
-          </div>
+          {job.city}
+        </div>
+        <div className="ago">
+          <i className="fa-regular fa-clock"></i>
+          {timeAgo(job.creacion.toDate().toString())}
         </div>
       </div>
-
-
     </div>
   )
 }

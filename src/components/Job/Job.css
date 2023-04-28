@@ -54,30 +54,18 @@
     border-radius: 4px;
 }
 
-/* JOB STATUS / FAV */
-.job_fav:hover {
-    cursor: pointer;
-    color: rgb(241, 68, 68);
-}
 
+/* STATUS */
 .job_status {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 8px;
+    align-self: end;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     font-family: 'Roboto';
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;
     color: #B9BDCF;
     gap: 5px;
-}
-
-.job_location {
-    display: flex;
-    gap: 8px;
-    align-items: center;
 }
 
 .job_status .city,
