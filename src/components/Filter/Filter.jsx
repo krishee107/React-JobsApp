@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './Filter.css'
+import { Tiempo } from '../Tiempo/Tiempo'
 
 export const Filter = ({ handleCity, handleTime }) => {
   const [time, setTime] = useState(null)
@@ -67,7 +68,10 @@ export const Filter = ({ handleCity, handleTime }) => {
           <input type="radio" name="radio" onChange={handleCityChange} className="city" value="false" />
           Sin definir
         </label>
+      </div>
 
+      <div className="tiempo" style={{ padding: `10px 0` }}>
+        <Tiempo />
       </div>
     </div>
   )
