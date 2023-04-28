@@ -92,7 +92,6 @@ const useFavJob = (id = null) => {
     const favJobs = async () => {
         const user = auth.currentUser;
         if (user === null) {
-            console.log("No hay usuario logueado");
             return null;
         }
         const uid = user.uid;
@@ -102,7 +101,6 @@ const useFavJob = (id = null) => {
         const favDoc = await getDoc(favRef);
 
         if (favDoc.exists()) {
-            console.log("Existe el documento de favoritos del usuario");
             const favData = favDoc.data();
 
             const favJobs = favData.jobs.map(async job => {
@@ -112,7 +110,7 @@ const useFavJob = (id = null) => {
                     job: jobDoc.data()
                 };
             });
-            console.log(favJobs);
+
             const jobs = await Promise.all(favJobs).then((values) => {
                 return values;
             });
