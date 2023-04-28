@@ -26,16 +26,15 @@ export const Administrar = () => {
     return () => unsubscribe();
   }, []);
 
-  const deleteJob = (id) => {
+  const deleteJob = async (id) => {
     const db = getFirestore();
     const jobRef = doc(db, "ofertas", id);
-    deleteDoc(jobRef)
-      .then(() => {
-        console.log("Se ha borrado correctamente");
-      })
-      .catch((error) => {
-        console.error("Error removing document: ", error);
-      });
+    try {
+      await deleteDoc(jobRef);
+      console.log("Se ha borrado correctamente");
+    } catch (error) {
+      console.error("Error removing document: ", error);
+    }
   };
 
   return (
