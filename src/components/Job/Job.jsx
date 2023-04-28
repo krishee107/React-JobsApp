@@ -37,7 +37,12 @@ export const Job = (props) => {
       <div className="job_status">
         <div className="city">
           <i className="fa-solid fa-earth-americas"></i>
-          {job.city}
+          {
+            job.city ?
+              job.city
+              :
+              'No especificado'
+          }
         </div>
         <div className="ago">
           <i className="fa-regular fa-clock"></i>

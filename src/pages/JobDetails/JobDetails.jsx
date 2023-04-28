@@ -95,10 +95,15 @@ export const JobDetails = () => {
                   <img src="https://gigr.com/images/png/default_logo.png" alt="Job logo" />
                 }
               </div>
-              <div className="job_profile_name">{job.city}</div>
+              <div className="job_profile_name">{job.nombre}</div>
               <div className="job_profile_city">
                 <i className="fa-solid fa-earth-americas"></i>
-                New york
+                {
+                  job.city ?
+                    job.city
+                    :
+                    'No especificado'
+                }
               </div>
             </div>
 
