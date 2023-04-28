@@ -82,25 +82,23 @@ export const JobDetails = () => {
       // Existe el documento de favoritos del usuario
       if (favDoc.exists()) {
         const favData = favDoc.data();
-        const favJobs = favData.jobs.map(job => job.id);
-        if (favJobs.includes(jobRef.id)) {
+        if (favData.jobs.includes(jobRef.id)) {
           console.log("Ya existe el job en favoritos del usuario, lo quitamos");
           // Lo eliminamos de favoritos
           await updateDoc(favRef, {
-            jobs: favData.jobs.filter(job => job.id !== jobRef.id)
+            jobs: arrayRemove(jobRef.id)
           });
         } else {
           // Lo añadimos a favoritos
           await updateDoc(favRef, {
-            jobs: [...favData.jobs, jobRef]
+            jobs: arrayUnion(jobRef.id)
           });
         }
       } else {
         // El documento de favoritos del usuario no existe, lo creamos
         console.log("No existe el documento de favoritos del usuario, lo añadimos");
         await setDoc(favRef, {
-          jobs: [
-            jobRef]
+          jobs: [jobRef.id]
         });
       }
     } else {
