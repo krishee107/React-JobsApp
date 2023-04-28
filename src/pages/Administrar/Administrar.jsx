@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Administrar.css'
 
-import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
+import { getFirestore, collection, onSnapshot, doc, deleteDoc } from 'firebase/firestore';
 import { app } from '../../firebase/firebase';
 import { Link } from 'react-router-dom';
 import { Job } from '../../components/Job/Job';
@@ -26,19 +26,37 @@ export const Administrar = () => {
     return () => unsubscribe();
   }, []);
 
+  const deleteJob = (id) => {
+    const db = getFirestore();
+    const jobRef = doc(db, "ofertas", id);
+    deleteDoc(jobRef)
+      .then(() => {
+        console.log("Se ha borrado correctamente");
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
+  };
+
   return (
     <div className="adminPanel">
       <div className="jobList">
-        {jobs.map(job => {
+        {jobs.map((job, index) => {
           return (
-            <Link to={`/jobDetail/${job.id}`} key={job.id} style={{ textDecoration: 'none' }}>
-              <div className="job_box">
+            <div className="job_box" key={index}>
+              <Link to={`/jobDetail/${job.id}`} key={job.id} style={{ textDecoration: 'none', width: `100%` }}>
                 <Job job={job} />
-                <Button variant="outlined" startIcon={<DeleteIcon />} style={{ color: `red`, borderColor: `red` }}>
-                  Delete
-                </Button>
-              </div>
-            </Link >
+              </Link >
+              <Button
+                variant="outlined"
+                startIcon={<DeleteIcon />}
+                style={{ color: `red`, borderColor: `red` }}
+                onClick={() => deleteJob(job.id)}
+              >
+
+                Delete
+              </Button>
+            </div>
           )
         })
         }
