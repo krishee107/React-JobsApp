@@ -17,6 +17,17 @@
     gap: 10px;
 }
 
+.imgLabel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 0;
+    font-size: 13px;
+    color: tomato;
+    font-weight: bold;
+}
+
+
 .city {
     display: flex;
     justify-self: center;

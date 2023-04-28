@@ -58,9 +58,8 @@ export const CreateJob = () => {
 
     const agregarOferta = async (oferta) => {
         try {
-            const docRef = await addDoc(collection(db, "ofertas"), oferta);
+            await addDoc(collection(db, "ofertas"), oferta);
             alert("La oferta se ha creado correctamente")
-            console.log(oferta)
             setCreada(true)
         } catch (e) {
             console.error("Error al agregar la oferta: ", e);
@@ -85,7 +84,10 @@ export const CreateJob = () => {
                         <Divider>Información de la empresa</Divider>
 
                         <TextField id="outlined-basic" label="Nombre de la empresa" name='name' variant="outlined" required />
-                        <TextField id="outlined-basic" label="URL logo de la empresa" name='img' variant="outlined" />
+                        <label className='imgLabel'>
+                            - Si no proporcionas una URL, se mostrará una imagen por defecto.
+                            <TextField id="outlined-basic" label="URL logo de la empresa" name='img' variant="outlined" />
+                        </label>
 
                         <Divider>Información de la oferta</Divider>
 
