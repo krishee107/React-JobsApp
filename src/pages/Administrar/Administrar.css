@@ -5,3 +5,11 @@
     align-items: center;
     justify-items: right;
 }
+
+@media screen and (max-width: 768px) {
+    .job_box {
+        grid-template-columns: 1fr;
+        justify-items: left;
+    }
+
+}
