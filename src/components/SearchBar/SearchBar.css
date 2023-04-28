@@ -57,3 +57,31 @@
     transform: translateY(-50%);
     color: #ccc;
 }
+
+@media screen and (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .header .inputGroup {
+        width: 100%;
+    }
+
+    .header input {
+        border-radius: 5px;
+        padding: 14px 0px;
+        width: 100%;
+    }
+
+    .header .fa-solid {
+        color: transparent
+    }
+
+    .header button {
+        margin-top: 10px;
+        width: 100%;
+        padding: 14px 20px;
+    }
+
+}
