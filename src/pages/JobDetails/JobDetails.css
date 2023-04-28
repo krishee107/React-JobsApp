@@ -48,6 +48,7 @@
     font-size: 24px;
     line-height: 28px;
     padding: 10px 0;
+    text-transform: capitalize;
 }
 
 /* Empresa mini profile */
