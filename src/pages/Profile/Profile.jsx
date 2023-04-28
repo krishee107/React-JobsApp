@@ -97,7 +97,7 @@ export const Profile = () => {
           <Paper elevation={5} style={{ margin: `0 auto`, padding: `30px` }}>
             <div className="userInfo" style={{ paddingBottom: `30px`, color: `#334680` }}>
               Hay 3 tipos de usuarios:<br></br>
-              -<b>Usuario:</b> Puede ver ofertas y sus detalles.<br />
+              -<b>Usuario:</b> Puede ver ofertas, los detalles de la oferta, marcarla como favorito y listar sus favoritos.<br />
               -<b>Empresa:</b> Puede hacer lo mismo que los usuarios y crear ofertas <br />
               -<b>Administrador:</b>: Puede hacer lo mismo que la empresa y borrar ofertas<br />
             </div>
