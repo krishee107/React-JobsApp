@@ -1,17 +1,31 @@
 import './JobDetails.css'
 
 import { useEffect, useState } from "react";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc, updateDoc, arrayRemove, arrayUnion, setDoc } from "firebase/firestore";
 import { Link, useParams } from "react-router-dom";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import moment from 'moment'
+import { useDispatch } from 'react-redux';
+import { auth, onAuthStateChanged } from '../../firebase/firebase';
+import { login } from '../../actions/auth';
 
 export const JobDetails = () => {
   const { id } = useParams();
   const [job, setJob] = useState(null);
   const [texto, setTexto] = useState(null)
+  const dispatch = useDispatch();
+  const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user?.uid) {
+        setUser(user);
+      }
+    });
+  }, [user])
+
+  /* Carga la oferta de trabajo */
   useEffect(() => {
     const db = getFirestore();
     const jobRef = doc(db, "ofertas", id);
@@ -26,6 +40,7 @@ export const JobDetails = () => {
     getJob();
   }, [id]);
 
+  /* Arregla el texto de la oferta de trabajo */
   useEffect(() => {
     if (job) {
       arreglarTexto();
@@ -41,9 +56,57 @@ export const JobDetails = () => {
     setTexto(texto_con_etiquetas);
   };
 
+  /* Calcula la diferencia de tiempo */
   const timeAgo = (date) => {
     return moment(date).fromNow(); // calcula la diferencia de tiempo
   }
+
+  /* Añade o elimina la oferta de trabajo de favoritos */
+  const favJob = async () => {
+    const uid = user.uid;
+    if (uid === null) {
+      console.log("No hay usuario logueado");
+      return;
+    }
+
+    const db = getFirestore();
+    const jobRef = doc(db, "ofertas", id);
+
+    const jobDoc = await getDoc(jobRef);
+    // Existe el job
+    if (jobDoc.exists()) {
+      const jobData = jobDoc.data();
+      const favRef = doc(db, "favoritos", uid);
+
+      const favDoc = await getDoc(favRef);
+      // Existe el documento de favoritos del usuario
+      if (favDoc.exists()) {
+        const favData = favDoc.data();
+        const favJobs = favData.jobs.map(job => job.id);
+        if (favJobs.includes(jobRef.id)) {
+          console.log("Ya existe el job en favoritos del usuario, lo quitamos");
+          // Lo eliminamos de favoritos
+          await updateDoc(favRef, {
+            jobs: favData.jobs.filter(job => job.id !== jobRef.id)
+          });
+        } else {
+          // Lo añadimos a favoritos
+          await updateDoc(favRef, {
+            jobs: [...favData.jobs, jobRef]
+          });
+        }
+      } else {
+        // El documento de favoritos del usuario no existe, lo creamos
+        console.log("No existe el documento de favoritos del usuario, lo añadimos");
+        await setDoc(favRef, {
+          jobs: [
+            jobRef]
+        });
+      }
+    } else {
+      console.log("No such document!");
+    }
+  };
 
   return (
     <div >
@@ -81,7 +144,7 @@ export const JobDetails = () => {
                 </div>
 
                 <div className="job_fav">
-                  <FavoriteBorderIcon />
+                  <FavoriteBorderIcon onClick={favJob} />
                 </div>
               </div>
               <div className="job_status">
